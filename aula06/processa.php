@@ -11,7 +11,7 @@
         header('Location: restrita.php?nome='.$nome);
     } else {
         // echo"Email ou senha errada, volte para o formulário";
-        header('Location: formulario.php?erro=1');
+        header('Location: error.php');
         
     }
 ?>
