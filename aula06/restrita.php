@@ -1,64 +1,64 @@
-<?php 
-    $nome = $_GET['nome'];
-?>
-
-
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Área Restrita</title>
-
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <style>
-        body {
-            height: 100vh;
-            background: linear-gradient(135deg, #292929, #000000);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
-
-        .box {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.1));
-            backdrop-filter: blur(15px);
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .typewriter {
-            font-size: 1.5rem;
-            border-right: 2px solid white;
-            white-space: nowrap;
-            overflow: hidden;
-            width: 0;
-            animation: typing 4s steps(40, end) forwards, blink 0.7s infinite;
-        }
-
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-
-        @keyframes blink {
-            50% { border-color: transparent }
-        }
-    </style>
+    <title>Gerenciamento de Clientes e Estoque</title>
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+    <div class="container">
+        <h1>Area restrita da sua empresa</h1>
+        
+        <div class="header">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Pesquisar cliente" oninput="pesquisarCliente()" onkeypress="handleKeyPress(event)">
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </div>
+            <button onclick="novoCliente()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                Novo Cliente
+            </button>
+            <button onclick="abastecerEstoque()">Adicionar Produto</button>
+            <button onclick="toggleEstoque()">Ver Produtos</button>
+        </div>
 
-<div class="box">
-    <h2 class="mb-4">🔐 Área Restrita</h2>
+        <!-- Tabela de clientes -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Valor a Pagar</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="clientesTableBody">
+                <!-- A tabela estará vazia até que os dados sejam carregados via JavaScript -->
+            </tbody>
+        </table>
 
-    <div class="typewriter">
-        <p>Bem vindo <?php echo $nome; ?> a sua área restrita!</p>
+        <!-- Seção de estoque -->
+        <div id="estoqueSection" style="display: none;">
+            <h2>Produtos Disponíveis</h2>
+            <table class="estoque-table">
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Preço Unitário</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="estoqueTableBody">
+                    <!-- O estoque será carregado aqui -->
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
-
+    
+<script src="assets/script.js"></script>
 </body>
 </html>

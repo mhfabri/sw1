@@ -10966,3 +10966,16 @@ video.bg-video {
     width: auto;
   }
 }
+
+
+
+
+
+
+
+body {
+    background-image: url('../assets/img/entenda-a-diferenca-de-security-x-safety.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
